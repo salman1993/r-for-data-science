@@ -1,0 +1,63 @@
+---
+title: "Chapter 3 -  Data visualisation"
+author: "Salman Mohammed"
+date: "February 7, 2017"
+output: html_document
+---
+
+#### Importing the necessary libraries
+```{r results='hide', message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+#### First look at the dataset
+```{r}
+mpg
+```
+
+
+#### A car's fuel efficiency vs. engine size
+We want to see the relationship between a car's engine size (displ) and it's fuel efficiency
+on the highway (hwy). A car with a low fuel efficiency consumes more fuel than a car with a high fuel efficiency when they travel the same distance.
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+In this plot, we can see a downward trend that explains a negative relationship between the two variables, so our hypothesis is that cars with bigger engines are less fuel efficient.
+
+#### 3.2.4 - Exercises
+
+1. Run ggplot(data = mpg) what do you see?
+```{r}
+ggplot(data = mpg)
+```
+
+2. How many rows are in mtcars? How many columns?
+```{r}
+nrow(mtcars)
+ncol(mtcars)
+```
+
+3. What does the drv variable describe? Read the help for ?mpg to find out.
+- drv describes the transmission system of the vehicle. The options are f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+
+4. Make a scatterplot of hwy vs cyl.
+- hwy is the highway miles per gallon
+- cyl is the number of cylinders
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = cyl, y =hwy))
+```
+
+5. What happens if you make a scatterplot of class vs drv. - class is the 'type' of car
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = class, y =drv))
+```
+
+6. Why is the plot not useful?
+- The 'type' of car (e.g. minivan, 2-seater) does not determine the transmission system of the vehicle (e.g. front-wheel drive).
+
+
+
+
